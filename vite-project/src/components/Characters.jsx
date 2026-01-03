@@ -8,99 +8,102 @@ const characters = [
     name: 'Eleven',
     nickname: 'El',
     ability: 'Telekinesis & Telepathy',
-    image: '`${import.meta.env.BASE_URL}images/eleven.jpg',
-    quote: '"Friends don\'t lie."'
+    image: `${import.meta.env.BASE_URL}images/eleven.jpg`,
+    quote: "Friends don't lie."
   },
   {
     name: 'Mike Wheeler',
     nickname: 'Mike',
     ability: 'Leadership & Loyalty',
-    image: '`${import.meta.env.BASE_URL}images/mike.jpg',
-    quote: '"She\'s our friend and she\'s crazy!"'
+    image: `${import.meta.env.BASE_URL}images/mike.jpg`,
+    quote: "She's our friend and she's crazy!"
   },
   {
     name: 'Dustin Henderson',
     nickname: 'Dustin',
     ability: 'Intelligence & Humor',
-    image: '`${import.meta.env.BASE_URL}images/dustin.jpg',
-    quote: '"She\'s a Demogorgon."'
+    image: `${import.meta.env.BASE_URL}images/dustin.jpg`,
+    quote: "She's a Demogorgon."
   },
   {
     name: 'Lucas Sinclair',
     nickname: 'Lucas',
     ability: 'Strategy & Bravery',
-    image: '`${import.meta.env.BASE_URL}images/lucas.jpg',
-    quote: '"You\'re an idiot, Steve Harrington."'
+    image: `${import.meta.env.BASE_URL}images/lucas.jpg`,
+    quote: "You're an idiot, Steve Harrington."
   },
   {
     name: 'Will Byers',
     nickname: 'Will',
     ability: 'True Sight',
-    image: '`${import.meta.env.BASE_URL}images/will.jpg',
-    quote: '"It\'s like I\'m stuck in the Upside Down."'
+    image: `${import.meta.env.BASE_URL}images/will.jpg`,
+    quote: "It's like I'm stuck in the Upside Down."
   },
   {
     name: 'Max Mayfield',
     nickname: 'MadMax',
     ability: 'Fearlessness',
-    image: '`${import.meta.env.BASE_URL}images/max.jpg',
-    quote: '"I\'m not afraid of you."'
+    image: `${import.meta.env.BASE_URL}images/max.jpg`,
+    quote: "I'm not afraid of you."
   },
   {
     name: 'Derek',
     nickname: 'Derek',
     ability: 'Mystery & Courage',
-    image: '`${import.meta.env.BASE_URL}images/derek.jpg',
-    quote: '"Suck my fat one"'
+    image: `${import.meta.env.BASE_URL}images/derek.jpg`,
+    quote: "Suck my fat one"
   },
   {
     name: 'Holly',
     nickname: 'Holly',
     ability: 'Intuition & Heart',
-    image: '`${import.meta.env.BASE_URL}images/holly.jpg',
-    quote: '"You sure you’re not a monster?"'  },
+    image: `${import.meta.env.BASE_URL}images/holly.jpg`,
+    quote: "You sure you’re not a monster?"
+  },
   {
     name: 'Steve Harrington',
     nickname: 'Steve',
     ability: 'Bat Wielding & Redemption',
-    image: '`${import.meta.env.BASE_URL}images/steve.jpg',
-    quote: '"How do you like your eggs in the morning?"'
+    image: `${import.meta.env.BASE_URL}images/steve.jpg`,
+    quote: "How do you like your eggs in the morning?"
   },
   {
     name: 'Jim Hopper',
     nickname: 'Hopper',
     ability: 'Protection & Determination',
-    image: '`${import.meta.env.BASE_URL}images/hopper.jpg',
-    quote: '"Mornings are for coffee and contemplation."'
+    image: `${import.meta.env.BASE_URL}images/hopper.jpg`,
+    quote: "Mornings are for coffee and contemplation."
   },
   {
     name: 'Joyce Byers',
     nickname: 'Joyce',
     ability: 'Motherly Instinct & Persistence',
-    image: '`${import.meta.env.BASE_URL}images/joyce.jpg',
-    quote: '"This is not a normal family."'
+    image: `${import.meta.env.BASE_URL}images/joyce.jpg`,
+    quote: "This is not a normal family."
   },
   {
     name: 'Nancy Wheeler',
     nickname: 'Nancy',
     ability: 'Investigation & Sharpshooting',
-    image: '`${import.meta.env.BASE_URL}images/nancy.jpg',
-    quote: '"I\'m not like other girls."'
+    image: `${import.meta.env.BASE_URL}images/nancy.jpg`,
+    quote: "I'm not like other girls."
   },
   {
     name: 'Murray Bauman',
     nickname: 'Murray',
     ability: 'Conspiracy & Truth-Seeking',
-    image: '`${import.meta.env.BASE_URL}images/murray.jpg',
-    quote: '"How is this my life?"'
+    image: `${import.meta.env.BASE_URL}images/murray.jpg`,
+    quote: "How is this my life?"
   },
   {
     name: 'Robin Buckley',
     nickname: 'Robin',
     ability: 'Languages & Wit',
-    image: '`${import.meta.env.BASE_URL}images/robin.jpg',
-    quote: '"I\'m officially terrified."'  }
+    image: `${import.meta.env.BASE_URL}images/robin.jpg`,
+    quote: "I'm officially terrified."
+  }
 ]
+
 
 const Characters = () => {
   const [selectedCharacter, setSelectedCharacter] = useState(null)
