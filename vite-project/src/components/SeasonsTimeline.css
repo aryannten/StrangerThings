@@ -1,0 +1,394 @@
+.timeline-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 100px 40px;
+  background: linear-gradient(180deg,
+    #0a0a12 0%,
+    #0d0d18 50%,
+    #0a0a12 100%
+  );
+  overflow: hidden;
+}
+
+/* Header */
+.timeline-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.timeline-title {
+  font-family: 'ITC Benguiat Bold Condensed', 'ITC Benguiat', serif;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  color: #c04050;
+  text-shadow: 
+    0 0 20px rgba(200, 50, 80, 0.6),
+    0 0 40px rgba(200, 50, 80, 0.3);
+  margin-bottom: 15px;
+}
+
+.timeline-subtitle {
+  font-family: 'ITC Benguiat Bold Condensed', monospace;
+  font-size: 1.1rem;
+  color: rgba(200, 180, 200, 0.7);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+/* Timeline container */
+.timeline-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Vertical line */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: rgba(100, 50, 80, 0.2);
+  transform: translateX(-50%);
+}
+
+.timeline-progress {
+  width: 100%;
+  background: linear-gradient(180deg,
+    #c04050 0%,
+    #a050c0 33%,
+    #5080d0 66%,
+    #d06040 100%
+  );
+  box-shadow: 0 0 15px rgba(200, 50, 80, 0.5);
+}
+
+/* Seasons list */
+.timeline-seasons {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* Individual season */
+.timeline-season {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  cursor: none;
+}
+
+.timeline-season:nth-child(odd) {
+  flex-direction: row;
+  padding-right: 55%;
+}
+
+.timeline-season:nth-child(even) {
+  flex-direction: row-reverse;
+  padding-left: 55%;
+}
+
+/* Year marker */
+.season-year-marker {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.year-dot {
+  width: 20px;
+  height: 20px;
+  background: var(--season-color, #c04050);
+  border: 3px solid #0a0a12;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 15px var(--season-color),
+    0 0 30px rgba(200, 50, 80, 0.3);
+  transition: all 0.3s ease;
+}
+
+.timeline-season:hover .year-dot,
+.timeline-season.active .year-dot {
+  transform: scale(1.3);
+  box-shadow: 
+    0 0 25px var(--season-color),
+    0 0 50px var(--season-color);
+}
+
+.year-text {
+  font-family: 'ITC Benguiat Bold Condensed', monospace;
+  font-size: 0.9rem;
+  color: var(--season-color);
+  margin-top: 10px;
+  letter-spacing: 0.2em;
+}
+
+/* Season card */
+.season-card {
+  background: linear-gradient(145deg,
+    rgba(20, 15, 30, 0.95) 0%,
+    rgba(15, 10, 25, 0.95) 100%
+  );
+  border: 1px solid rgba(200, 100, 150, 0.2);
+  border-left: 3px solid var(--season-color);
+  border-radius: 8px;
+  padding: 25px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-season:hover .season-card,
+.timeline-season.active .season-card {
+  border-color: var(--season-color);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.4),
+    0 0 30px color-mix(in srgb, var(--season-color) 30%, transparent);
+}
+
+/* Season number badge */
+.season-number {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  background: var(--season-color);
+  padding: 8px 15px;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.season-number span {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.season-number strong {
+  font-family: 'ITC Benguiat Bold Condensed', serif;
+  font-size: 1.5rem;
+  color: #fff;
+  line-height: 1;
+}
+
+/* Season info */
+.season-info {
+  padding-right: 60px;
+}
+
+.season-title {
+  font-family: 'ITC Benguiat Bold Condensed', 'ITC Benguiat', serif;
+  font-size: 1.4rem;
+  color: #d0a0b0;
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.timeline-season:hover .season-title {
+  color: var(--season-color);
+}
+
+.season-episodes {
+  font-size: 0.8rem;
+  color: rgba(180, 160, 200, 0.6);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.season-description {
+  font-size: 0.95rem;
+  color: rgba(180, 170, 200, 0.85);
+  line-height: 1.6;
+}
+
+/* Key events */
+.season-events {
+  overflow: hidden;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(200, 100, 150, 0.2);
+}
+
+.season-events h4 {
+  font-family: 'ITC Benguiat Bold Condensed', monospace;
+  font-size: 0.85rem;
+  color: var(--season-color);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.season-events ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.season-events li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: rgba(180, 170, 200, 0.8);
+}
+
+.season-events li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--season-color);
+}
+
+/* Expand button */
+.season-expand {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(200, 100, 150, 0.1);
+  border: 1px solid rgba(200, 100, 150, 0.3);
+  border-radius: 50%;
+  color: var(--season-color);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.timeline-season:hover .season-expand {
+  background: rgba(200, 100, 150, 0.2);
+  border-color: var(--season-color);
+}
+
+/* Corner decoration */
+.season-corner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  border-left: 2px solid var(--season-color);
+  border-bottom: 2px solid var(--season-color);
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.timeline-season:hover .season-corner,
+.timeline-season.active .season-corner {
+  opacity: 0.7;
+}
+
+/* Particles */
+.timeline-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.timeline-particle {
+  position: absolute;
+  bottom: -10px;
+  width: 3px;
+  height: 3px;
+  background: radial-gradient(circle,
+    rgba(200, 150, 180, 0.6) 0%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  animation: timeline-float linear infinite;
+}
+
+@keyframes timeline-float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.3; }
+  100% {
+    transform: translateY(-100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 900px) {
+  .timeline-section {
+    padding: 60px 20px;
+  }
+  
+  .timeline-line {
+    left: 30px;
+  }
+  
+  .timeline-season,
+  .timeline-season:nth-child(odd),
+  .timeline-season:nth-child(even) {
+    flex-direction: row;
+    padding: 0 0 0 70px;
+  }
+  
+  .season-year-marker {
+    left: 30px;
+  }
+  
+  .season-card {
+    padding: 20px;
+  }
+  
+  .season-number {
+    top: -10px;
+    right: 10px;
+    padding: 5px 10px;
+  }
+  
+  .season-number span {
+    font-size: 0.5rem;
+  }
+  
+  .season-number strong {
+    font-size: 1.2rem;
+  }
+  
+  .season-info {
+    padding-right: 40px;
+  }
+  
+  .season-title {
+    font-size: 1.1rem;
+  }
+  
+  .season-description {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-title {
+    font-size: 2rem;
+  }
+  
+  .season-card {
+    padding: 15px;
+  }
+  
+  .season-info {
+    padding-right: 30px;
+  }
+}

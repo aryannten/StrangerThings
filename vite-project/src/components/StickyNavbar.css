@@ -1,0 +1,228 @@
+.sticky-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9990;
+  padding: 15px 0;
+  transition: all 0.3s ease;
+}
+
+.sticky-navbar.scrolled {
+  background: rgba(10, 5, 15, 0.95);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+}
+
+.sticky-navbar.upside-down-mode {
+  background: rgba(5, 2, 10, 0.95);
+}
+
+.sticky-navbar.upside-down-mode.scrolled {
+  box-shadow: 
+    0 5px 30px rgba(100, 30, 60, 0.3),
+    0 0 50px rgba(50, 20, 40, 0.2);
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.navbar-logo {
+  display: flex;
+  flex-direction: column;
+  cursor: none;
+  line-height: 0.85;
+}
+
+.logo-text {
+  font-family: 'ITC Benguiat Bold Condensed', 'ITC Benguiat', serif;
+  font-size: 1.4rem;
+  color: #c04050;
+  text-shadow: 
+    0 0 10px rgba(200, 50, 80, 0.6),
+    0 0 20px rgba(200, 50, 80, 0.3);
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.navbar-logo:hover .logo-text {
+  text-shadow: 
+    0 0 15px rgba(255, 80, 100, 0.8),
+    0 0 30px rgba(255, 80, 100, 0.5);
+}
+
+/* Navigation links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-link {
+  padding: 10px 20px;
+  background: transparent;
+  border: none;
+  color: rgba(200, 180, 200, 0.9);
+  font-family: 'ITC Benguiat Bold Condensed', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: #c04050;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #c04050;
+}
+
+.nav-link:hover::after {
+  width: 60%;
+}
+
+/* Enter/Exit buttons */
+.nav-link.enter-btn,
+.nav-link.exit-btn {
+  background: rgba(200, 50, 80, 0.2);
+  border: 1px solid rgba(200, 100, 120, 0.5);
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+.nav-link.enter-btn:hover {
+  background: rgba(200, 50, 80, 0.4);
+  border-color: rgba(255, 100, 120, 0.8);
+}
+
+.nav-link.exit-btn {
+  background: rgba(80, 100, 200, 0.2);
+  border-color: rgba(100, 150, 255, 0.5);
+  color: rgba(150, 180, 255, 0.9);
+}
+
+.nav-link.exit-btn:hover {
+  background: rgba(80, 100, 200, 0.4);
+  border-color: rgba(100, 180, 255, 0.8);
+  color: #a0c0ff;
+}
+
+.nav-link.exit-btn::after {
+  background: #8090ff;
+}
+
+/* Navbar decorative line */
+.navbar-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(200, 100, 120, 0.3) 20%,
+    rgba(200, 100, 120, 0.5) 50%,
+    rgba(200, 100, 120, 0.3) 80%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sticky-navbar.scrolled .navbar-line {
+  opacity: 1;
+}
+
+.sticky-navbar.upside-down-mode .navbar-line {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(100, 50, 150, 0.3) 20%,
+    rgba(150, 80, 180, 0.5) 50%,
+    rgba(100, 50, 150, 0.3) 80%,
+    transparent 100%
+  );
+}
+
+/* Mobile menu toggle */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  cursor: none;
+}
+
+.menu-bar {
+  width: 25px;
+  height: 2px;
+  background: #c04050;
+  transition: all 0.3s ease;
+}
+
+/* Mobile styles */
+@media (max-width: 900px) {
+  .navbar-links {
+    display: none;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .navbar-container {
+    padding: 0 20px;
+  }
+  
+  .logo-text {
+    font-size: 1.1rem;
+  }
+}
+
+/* Upside Down mode color changes */
+.sticky-navbar.upside-down-mode .logo-text {
+  color: #a060c0;
+  text-shadow: 
+    0 0 10px rgba(150, 80, 200, 0.6),
+    0 0 20px rgba(150, 80, 200, 0.3);
+}
+
+.sticky-navbar.upside-down-mode .nav-link {
+  color: rgba(180, 160, 220, 0.9);
+}
+
+.sticky-navbar.upside-down-mode .nav-link:hover {
+  color: #a080d0;
+}
+
+.sticky-navbar.upside-down-mode .nav-link::after {
+  background: #a060c0;
+}
+
+.sticky-navbar.upside-down-mode .nav-link.enter-btn {
+  background: rgba(150, 80, 200, 0.2);
+  border-color: rgba(180, 120, 220, 0.5);
+}
+
+.sticky-navbar.upside-down-mode .menu-bar {
+  background: #a060c0;
+}

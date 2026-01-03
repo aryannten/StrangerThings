@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import './Characters.css'
+import CharacterModal from './CharacterModal'
 
 const characters = [
   {
@@ -102,6 +103,8 @@ const characters = [
 ]
 
 const Characters = () => {
+  const [selectedCharacter, setSelectedCharacter] = useState(null)
+
   const container = {
     hidden: {},
     visible: {
@@ -149,6 +152,7 @@ const Characters = () => {
               boxShadow: "0 0 40px rgba(255, 50, 50, 0.5)",
               transition: { duration: 0.3 }
             }}
+            onClick={() => setSelectedCharacter(char)}
           >
             <div className="card-image-container">
               <div 
@@ -169,6 +173,14 @@ const Characters = () => {
           </motion.div>
         ))}
       </motion.div>
+
+      {/* Character Modal */}
+      {selectedCharacter && (
+        <CharacterModal 
+          character={selectedCharacter} 
+          onClose={() => setSelectedCharacter(null)} 
+        />
+      )}
     </section>
   )
 }

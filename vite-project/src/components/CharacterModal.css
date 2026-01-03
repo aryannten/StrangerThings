@@ -1,0 +1,330 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.character-modal {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  background: linear-gradient(145deg, 
+    rgba(20, 10, 25, 0.98) 0%, 
+    rgba(15, 8, 20, 0.98) 100%
+  );
+  border: 2px solid rgba(200, 100, 120, 0.4);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 
+    0 0 50px rgba(200, 50, 80, 0.3),
+    0 0 100px rgba(100, 30, 60, 0.2),
+    inset 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Glitch overlay */
+.modal-glitch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0;
+  animation: modal-glitch-flash 8s infinite;
+  z-index: 100;
+}
+
+@keyframes modal-glitch-flash {
+  0%, 97%, 100% { opacity: 0; }
+  97.5% { 
+    opacity: 0.3;
+    background: linear-gradient(90deg, 
+      rgba(255, 0, 0, 0.1) 33%, 
+      rgba(0, 255, 0, 0.1) 66%, 
+      rgba(0, 0, 255, 0.1) 100%
+    );
+    transform: translateX(3px);
+  }
+  98% { 
+    opacity: 0.5;
+    transform: translateX(-5px);
+  }
+  98.5% { 
+    opacity: 0.2;
+    transform: translateX(2px);
+  }
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 101;
+  width: 40px;
+  height: 40px;
+  background: rgba(200, 50, 80, 0.3);
+  border: 2px solid rgba(200, 100, 120, 0.5);
+  border-radius: 50%;
+  color: #d0a0b0;
+  font-size: 1.2rem;
+  cursor: none;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: rgba(255, 80, 100, 0.5);
+  border-color: rgba(255, 150, 170, 0.8);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(200, 50, 80, 0.6);
+}
+
+/* Image section */
+.modal-image-section {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.modal-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center top;
+}
+
+.modal-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(20, 10, 25, 0.5) 70%,
+    rgba(20, 10, 25, 1) 100%
+  );
+}
+
+.modal-scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  pointer-events: none;
+}
+
+/* Content section */
+.modal-content {
+  padding: 30px;
+  text-align: center;
+}
+
+.modal-nickname {
+  font-family: 'ITC Benguiat Bold Condensed', monospace;
+  font-size: 0.9rem;
+  color: rgba(200, 150, 180, 0.8);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.modal-name {
+  font-family: 'ITC Benguiat Bold Condensed', 'ITC Benguiat', serif;
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: #c04050;
+  margin: 10px 0 20px;
+  text-shadow: 
+    0 0 20px rgba(200, 50, 80, 0.6),
+    0 0 40px rgba(200, 50, 80, 0.3);
+  animation: name-glow 3s ease-in-out infinite;
+}
+
+@keyframes name-glow {
+  0%, 100% { text-shadow: 0 0 20px rgba(200, 50, 80, 0.6); }
+  50% { text-shadow: 0 0 40px rgba(255, 80, 100, 0.8); }
+}
+
+.modal-ability-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, 
+    rgba(200, 50, 80, 0.3) 0%, 
+    rgba(150, 30, 60, 0.2) 100%
+  );
+  border: 1px solid rgba(200, 100, 120, 0.5);
+  border-radius: 20px;
+  color: #d0a0b0;
+  font-family: 'ITC Benguiat Bold Condensed', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.modal-quote {
+  font-family: 'ITC Benguiat Bold Condensed', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #a080a0;
+  line-height: 1.6;
+  margin: 0 0 20px;
+  padding: 0 20px;
+}
+
+.modal-quote::before,
+.modal-quote::after {
+  color: rgba(200, 100, 120, 0.5);
+}
+
+.modal-divider {
+  width: 60%;
+  height: 2px;
+  margin: 20px auto;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(200, 100, 120, 0.5) 50%,
+    transparent 100%
+  );
+  transform-origin: center;
+}
+
+.modal-bio {
+  color: rgba(180, 160, 180, 0.9);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Corner decorations */
+.modal-corner {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(200, 100, 120, 0.5);
+  z-index: 50;
+}
+
+.modal-corner.top-left {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.modal-corner.top-right {
+  top: 10px;
+  right: 10px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.modal-corner.bottom-left {
+  bottom: 10px;
+  left: 10px;
+  border-right: none;
+  border-top: none;
+}
+
+.modal-corner.bottom-right {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Veins effect */
+.modal-veins {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.modal-veins .vein {
+  position: absolute;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(150, 50, 80, 0.4) 50%,
+    transparent 100%
+  );
+  border-radius: 2px;
+  animation: vein-grow-modal 2s ease-out forwards;
+}
+
+.vein.v1 {
+  bottom: 0;
+  left: 0;
+  width: 150px;
+  height: 2px;
+  transform-origin: left;
+  animation-delay: 0.5s;
+}
+
+.vein.v2 {
+  bottom: 0;
+  right: 0;
+  width: 120px;
+  height: 2px;
+  transform-origin: right;
+  animation-delay: 0.7s;
+}
+
+.vein.v3 {
+  top: 50%;
+  left: 0;
+  width: 80px;
+  height: 2px;
+  transform-origin: left;
+  animation-delay: 0.9s;
+}
+
+@keyframes vein-grow-modal {
+  from { transform: scaleX(0); opacity: 0; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 10px;
+  }
+  
+  .character-modal {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .modal-image-section {
+    height: 200px;
+  }
+  
+  .modal-content {
+    padding: 20px;
+  }
+  
+  .modal-quote {
+    font-size: 1.1rem;
+    padding: 0 10px;
+  }
+}

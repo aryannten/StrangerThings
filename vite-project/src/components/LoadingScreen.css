@@ -1,0 +1,310 @@
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100000;
+  background: #0a0a0a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Flickering background */
+.loading-flicker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #0a0a0a;
+  animation: loading-flicker-anim 0.15s infinite;
+}
+
+@keyframes loading-flicker-anim {
+  0% { background: #0a0a0a; }
+  10% { background: #111; }
+  20% { background: #0a0a0a; }
+  30% { background: #0d0d0d; }
+  40% { background: #080808; }
+  50% { background: #0f0f0f; }
+  60% { background: #0a0a0a; }
+  70% { background: #0b0505; }
+  80% { background: #0a0a0a; }
+  90% { background: #0e0e0e; }
+  100% { background: #0a0a0a; }
+}
+
+/* VHS noise overlay */
+.loading-noise {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  pointer-events: none;
+  animation: noise-shift 0.1s infinite;
+}
+
+@keyframes noise-shift {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-1%, -1%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Scan lines */
+.loading-scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  pointer-events: none;
+  animation: scanline-scroll 0.1s linear infinite;
+}
+
+@keyframes scanline-scroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(4px); }
+}
+
+/* Logo */
+.loading-logo {
+  position: relative;
+  z-index: 10;
+  margin-bottom: 40px;
+}
+
+.loading-title {
+  font-family: 'ITC Benguiat', 'ITC Benguiat Bold', 'Benguiat', serif;
+  font-weight: bold;
+  font-size: clamp(3rem, 12vw, 8rem);
+  color: #c04050;
+  text-align: center;
+  line-height: 0.9;
+  text-shadow: 
+    0 0 20px rgba(200, 50, 80, 0.8),
+    0 0 40px rgba(200, 50, 80, 0.5),
+    0 0 80px rgba(200, 50, 80, 0.3),
+    0 0 120px rgba(150, 30, 60, 0.2);
+  animation: title-glow 2s ease-in-out infinite;
+}
+
+.title-line {
+  display: block;
+}
+
+@keyframes title-glow {
+  0%, 100% { 
+    text-shadow: 
+      0 0 20px rgba(200, 50, 80, 0.8),
+      0 0 40px rgba(200, 50, 80, 0.5),
+      0 0 80px rgba(200, 50, 80, 0.3);
+    opacity: 1;
+  }
+  50% { 
+    text-shadow: 
+      0 0 30px rgba(255, 80, 100, 1),
+      0 0 60px rgba(255, 80, 100, 0.7),
+      0 0 100px rgba(200, 50, 80, 0.5);
+    opacity: 0.95;
+  }
+}
+
+/* Loading text */
+.loading-text-container {
+  position: relative;
+  z-index: 10;
+  height: 30px;
+  margin-bottom: 30px;
+}
+
+.loading-text {
+  font-family: 'ITC Benguiat Bold Condensed', monospace;
+  font-size: 1rem;
+  color: #d0a0b0;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.loading-cursor {
+  font-family: monospace;
+  font-size: 1rem;
+  color: #c04050;
+  animation: cursor-blink 0.6s infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Progress bar */
+.loading-progress-container {
+  position: relative;
+  z-index: 10;
+  width: 300px;
+  height: 4px;
+  background: rgba(100, 50, 70, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(200, 100, 120, 0.3);
+}
+
+.loading-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, 
+    #c04050 0%, 
+    #d06070 50%, 
+    #c04050 100%
+  );
+  box-shadow: 
+    0 0 10px rgba(200, 50, 80, 0.8),
+    0 0 20px rgba(200, 50, 80, 0.5);
+  border-radius: 2px;
+}
+
+/* Particles */
+.loading-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.loading-particle {
+  position: absolute;
+  bottom: -10px;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, 
+    rgba(200, 150, 180, 0.8) 0%, 
+    rgba(150, 100, 130, 0.3) 100%
+  );
+  border-radius: 50%;
+  animation: loading-particle-float linear infinite;
+}
+
+@keyframes loading-particle-float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.6; }
+  100% {
+    transform: translateY(-100vh) translateX(30px);
+    opacity: 0;
+  }
+}
+
+/* Corner decorations */
+.loading-corner {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 2px solid rgba(200, 100, 120, 0.4);
+}
+
+.loading-corner.top-left {
+  top: 30px;
+  left: 30px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.loading-corner.top-right {
+  top: 30px;
+  right: 30px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.loading-corner.bottom-left {
+  bottom: 30px;
+  left: 30px;
+  border-right: none;
+  border-top: none;
+}
+
+.loading-corner.bottom-right {
+  bottom: 30px;
+  right: 30px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Christmas lights */
+.loading-lights {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.christmas-light {
+  position: absolute;
+  width: 12px;
+  height: 20px;
+  border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+  animation: light-flicker 0.5s infinite;
+}
+
+.christmas-light:nth-child(1) { background: #ff4444; }
+.christmas-light:nth-child(2) { background: #44ff44; }
+.christmas-light:nth-child(3) { background: #4444ff; }
+.christmas-light:nth-child(4) { background: #ffff44; }
+.christmas-light:nth-child(5) { background: #ff44ff; }
+.christmas-light:nth-child(6) { background: #44ffff; }
+.christmas-light:nth-child(7) { background: #ff8844; }
+.christmas-light:nth-child(8) { background: #ff4488; }
+
+@keyframes light-flicker {
+  0%, 100% { 
+    opacity: 1;
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+  30% { opacity: 0.7; }
+  50% { 
+    opacity: 0.4;
+    box-shadow: 0 0 5px currentColor;
+  }
+  70% { opacity: 0.8; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .loading-title {
+    font-size: clamp(2rem, 15vw, 4rem);
+  }
+  
+  .loading-progress-container {
+    width: 200px;
+  }
+  
+  .loading-corner {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .loading-lights {
+    display: none;
+  }
+}

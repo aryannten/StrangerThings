@@ -5,11 +5,19 @@ import './App.css'
 import Hero from './components/Hero'
 import Characters from './components/Characters'
 import UpsideDown from './components/UpsideDown'
+import SeasonsTimeline from './components/SeasonsTimeline'
+// Audio removed
+import CustomCursor from './components/CustomCursor'
+import VHSFilter from './components/VHSFilter'
+import LoadingScreen from './components/LoadingScreen'
+// StickyNavbar removed
+import EasterEggs from './components/EasterEggs'
 
 function App() {
   const [inUpsideDown, setInUpsideDown] = useState(false)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [transitionPhase, setTransitionPhase] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
 
   const enterUpsideDown = () => {
     setIsTransitioning(true)
@@ -39,8 +47,26 @@ function App() {
     }, 5500)
   }
 
+  // Show loading screen initially
+  if (isLoading) {
+    return <LoadingScreen onLoadComplete={() => setIsLoading(false)} />
+  }
+
   return (
     <>
+      {/* Custom Cursor - disabled on hero page */}
+      {inUpsideDown && <CustomCursor inUpsideDown={inUpsideDown} />}
+      
+      {/* VHS Filter Overlay */}
+      <VHSFilter intensity={0.8} inUpsideDown={inUpsideDown} />
+      
+
+      
+
+      
+      {/* Easter Eggs */}
+      <EasterEggs inUpsideDown={inUpsideDown} />
+
       {/* Horror Portal Transition */}
       <AnimatePresence>
         {isTransitioning && (
@@ -130,6 +156,7 @@ function App() {
           >
             <Hero onEnterUpsideDown={enterUpsideDown} />
             <Characters />
+            <SeasonsTimeline />
           </motion.div>
         )}
       </AnimatePresence>

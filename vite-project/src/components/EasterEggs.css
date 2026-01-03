@@ -1,0 +1,300 @@
+/* Demogorgon jumpscare */
+.demogorgon-jumpscare {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.demogorgon-face {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  animation: face-shake 0.1s infinite;
+}
+
+@keyframes face-shake {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-5px, 5px) rotate(-2deg); }
+  50% { transform: translate(5px, -5px) rotate(2deg); }
+  75% { transform: translate(-3px, -3px) rotate(-1deg); }
+}
+
+.petal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 150px;
+  background: linear-gradient(180deg,
+    #4a2a30 0%,
+    #6a3a40 30%,
+    #8a4a50 50%,
+    #6a3a40 70%,
+    #4a2a30 100%
+  );
+  border-radius: 50% 50% 20% 20%;
+  transform-origin: bottom center;
+  animation: petal-open 0.5s ease-out forwards;
+}
+
+.petal::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 80px;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(200, 100, 100, 0.3) 50%,
+    transparent 100%
+  );
+  border-radius: 50%;
+}
+
+/* Teeth on petals */
+.petal::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: repeating-linear-gradient(90deg,
+    transparent 0px,
+    transparent 8px,
+    #ddd 8px,
+    #fff 10px,
+    #ddd 12px,
+    transparent 12px,
+    transparent 20px
+  );
+  clip-path: polygon(
+    0% 100%,
+    5% 0%,
+    15% 100%,
+    20% 0%,
+    30% 100%,
+    35% 0%,
+    45% 100%,
+    50% 0%,
+    60% 100%,
+    65% 0%,
+    75% 100%,
+    80% 0%,
+    90% 100%,
+    95% 0%,
+    100% 100%
+  );
+}
+
+.petal.p1 { transform: translate(-50%, -100%) rotate(0deg); }
+.petal.p2 { transform: translate(-50%, -100%) rotate(72deg); }
+.petal.p3 { transform: translate(-50%, -100%) rotate(144deg); }
+.petal.p4 { transform: translate(-50%, -100%) rotate(216deg); }
+.petal.p5 { transform: translate(-50%, -100%) rotate(288deg); }
+
+@keyframes petal-open {
+  0% { 
+    transform: translate(-50%, -100%) rotate(var(--base-rotation, 0deg)) rotateX(-80deg);
+    opacity: 0;
+  }
+  100% { 
+    transform: translate(-50%, -100%) rotate(var(--base-rotation, 0deg)) rotateX(-20deg);
+    opacity: 1;
+  }
+}
+
+.demogorgon-mouth {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle,
+    #1a0a0a 0%,
+    #2a1515 50%,
+    #3a2020 100%
+  );
+  border-radius: 50%;
+  box-shadow: 
+    inset 0 0 30px #000,
+    0 0 50px rgba(200, 50, 50, 0.5);
+}
+
+.jumpscare-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center,
+    transparent 20%,
+    rgba(100, 20, 20, 0.3) 50%,
+    rgba(50, 10, 10, 0.8) 100%
+  );
+  animation: overlay-pulse 0.2s infinite;
+}
+
+@keyframes overlay-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.jumpscare-text {
+  position: absolute;
+  bottom: 20%;
+  font-family: 'ITC Benguiat Bold Condensed', serif;
+  font-size: 2rem;
+  color: #c04050;
+  text-shadow: 
+    0 0 20px rgba(200, 50, 80, 0.8),
+    0 0 40px rgba(200, 50, 80, 0.5);
+  letter-spacing: 0.2em;
+  animation: text-flicker 0.15s infinite;
+}
+
+@keyframes text-flicker {
+  0%, 100% { opacity: 1; }
+  33% { opacity: 0.7; }
+  66% { opacity: 0.9; }
+}
+
+/* Secret message */
+.secret-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+}
+
+.message-text {
+  font-family: 'ITC Benguiat Bold Condensed', serif;
+  font-size: clamp(2rem, 10vw, 6rem);
+  color: #c04050;
+  text-shadow: 
+    0 0 30px rgba(200, 50, 80, 1),
+    0 0 60px rgba(200, 50, 80, 0.7),
+    0 0 100px rgba(200, 50, 80, 0.4);
+  letter-spacing: 0.1em;
+  animation: message-glitch 0.2s infinite;
+}
+
+@keyframes message-glitch {
+  0% { 
+    transform: translate(0, 0);
+    text-shadow: 
+      0 0 30px rgba(200, 50, 80, 1),
+      0 0 60px rgba(200, 50, 80, 0.7);
+  }
+  25% { 
+    transform: translate(-3px, 2px);
+    text-shadow: 
+      3px 0 30px rgba(255, 0, 0, 0.8),
+      -3px 0 30px rgba(0, 255, 255, 0.8);
+  }
+  50% { 
+    transform: translate(2px, -2px);
+  }
+  75% { 
+    transform: translate(-1px, 1px);
+    text-shadow: 
+      -2px 0 30px rgba(255, 0, 0, 0.6),
+      2px 0 30px rgba(0, 255, 255, 0.6);
+  }
+  100% { 
+    transform: translate(0, 0);
+  }
+}
+
+/* Egg counter */
+.egg-counter {
+  position: fixed;
+  top: 100px;
+  right: 30px;
+  z-index: 9989;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  background: rgba(20, 10, 30, 0.9);
+  border: 1px solid rgba(200, 100, 120, 0.4);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.egg-icon {
+  font-size: 1.2rem;
+}
+
+.egg-count {
+  font-family: 'ITC Benguiat Bold Condensed', monospace;
+  font-size: 0.9rem;
+  color: #d0a0b0;
+  letter-spacing: 0.1em;
+}
+
+/* Hidden easter egg elements */
+.hidden-egg {
+  position: fixed;
+  opacity: 0;
+  cursor: none;
+  z-index: 1;
+}
+
+.christmas-lights-egg {
+  top: 15%;
+  left: 5%;
+  width: 50px;
+  height: 50px;
+}
+
+.hidden-egg:hover {
+  opacity: 0.1;
+  background: rgba(255, 100, 100, 0.3);
+  border-radius: 50%;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .demogorgon-face {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .petal {
+    width: 50px;
+    height: 100px;
+  }
+  
+  .demogorgon-mouth {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .jumpscare-text {
+    font-size: 1.2rem;
+  }
+  
+  .egg-counter {
+    top: 80px;
+    right: 20px;
+  }
+}
