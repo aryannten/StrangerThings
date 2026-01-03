@@ -15,6 +15,14 @@
   align-items: center;
   justify-content: center;
   padding: 40px;
+  cursor: none;
+}
+
+/* Hide default cursor in upside down */
+.upside-down *,
+.upside-down *::before,
+.upside-down *::after {
+  cursor: none !important;
 }
 
 /* Lightning flash effect */
