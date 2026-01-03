@@ -7,20 +7,30 @@ const CustomCursor = ({ inUpsideDown }) => {
   const trailRef = useRef([])
   const [isHovering, setIsHovering] = useState(false)
   const [particles, setParticles] = useState([])
+  const [isVisible, setIsVisible] = useState(false)
   const particleIdRef = useRef(0)
+  const mousePositionRef = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 })
+
+  // Delay visibility to prevent glitch on mount
+  useEffect(() => {
+    const timer = setTimeout(() => setIsVisible(true), 100)
+    return () => clearTimeout(timer)
+  }, [])
 
   useEffect(() => {
     const cursor = cursorRef.current
     const cursorDot = cursorDotRef.current
     
-    let mouseX = 0
-    let mouseY = 0
-    let cursorX = 0
-    let cursorY = 0
+    // Initialize to center or last known position
+    let mouseX = mousePositionRef.current.x
+    let mouseY = mousePositionRef.current.y
+    let cursorX = mouseX
+    let cursorY = mouseY
 
     const moveCursor = (e) => {
       mouseX = e.clientX
       mouseY = e.clientY
+      mousePositionRef.current = { x: mouseX, y: mouseY }
 
       // Create particle trail in Upside Down
       if (inUpsideDown && Math.random() > 0.7) {
@@ -80,12 +90,19 @@ const CustomCursor = ({ inUpsideDown }) => {
     }
   }, [inUpsideDown])
 
+  // Don't render until visible and positioned
+  if (!isVisible) return null
+
   return (
     <>
       {/* Main cursor glow */}
       <div 
         ref={cursorRef}
         className={`custom-cursor ${inUpsideDown ? 'upside-down' : 'normal'} ${isHovering ? 'hovering' : ''}`}
+        style={{ 
+          left: mousePositionRef.current.x,
+          top: mousePositionRef.current.y
+        }}
       >
         <div className="cursor-glow"></div>
         {!inUpsideDown && <div className="flashlight-beam"></div>}
@@ -96,6 +113,10 @@ const CustomCursor = ({ inUpsideDown }) => {
       <div 
         ref={cursorDotRef}
         className={`cursor-dot ${inUpsideDown ? 'upside-down' : ''} ${isHovering ? 'hovering' : ''}`}
+        style={{ 
+          left: mousePositionRef.current.x,
+          top: mousePositionRef.current.y
+        }}
       />
 
       {/* Particle trail */}
