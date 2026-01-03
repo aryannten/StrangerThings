@@ -340,7 +340,7 @@
 }
 
 .upside-title {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'ITC Benguiat', 'ITC Benguiat Bold Condensed', serif;
   font-size: clamp(3rem, 10vw, 7rem);
   color: #9080c0;
   text-transform: uppercase;
@@ -557,7 +557,7 @@
 }
 
 .villains-title {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'ITC Benguiat', 'ITC Benguiat Bold Condensed', serif;
   font-size: clamp(2rem, 5vw, 3.5rem);
   color: #c04050;
   text-transform: uppercase;
@@ -721,7 +721,7 @@
 }
 
 .villain-name {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'ITC Benguiat', 'ITC Benguiat Bold Condensed', serif;
   font-size: 2.2rem;
   color: #d0a0b0;
   letter-spacing: 0.15em;

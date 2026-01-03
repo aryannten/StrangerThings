@@ -26,14 +26,6 @@ const villains = [
     abilities: ['Psychic Torture', 'Telekinesis', 'Mind Invasion'],
     threat: 'APOCALYPTIC',
     image: '/images/vecna.jpg'
-  },
-  {
-    name: 'DEMODOGS',
-    title: 'The Pack Hunters',
-    description: 'Juvenile Demogorgons that hunt in packs. Faster and more aggressive than their adult form, they swarm their prey with deadly coordination.',
-    abilities: ['Pack Hunting', 'Speed', 'Tunneling'],
-    threat: 'HIGH',
-    image: '/images/demodogs.jpg'
   }
 ]
 

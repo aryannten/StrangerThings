@@ -522,7 +522,7 @@
 }
 
 .glitch-text {
-  font-family: 'Bebas Neue', monospace;
+  font-family: 'ITC Benguiat Bold Condensed', 'Bebas Neue', monospace;
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   color: rgba(200, 150, 180, 0.9);
   letter-spacing: 0.4em;
